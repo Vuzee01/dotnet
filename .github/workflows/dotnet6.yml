@@ -1,0 +1,25 @@
+name: Dotnet6 Scan
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "6/**"
+  pull_request:
+    types: [closed]
+    branches: [ main ]
+    paths:
+      - "6/**"
+
+
+jobs:
+  build:
+    uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
+    with:
+      dotnet_version: "6.0.x"
+      project_name: "Vuzee01_dotnet"
+      org_name: "vuzimir"
+      build_dir: "6/"
+    secrets:
+      sonar_token: ${{ secrets.SONAR_TOKEN }}
+      github_token: ${{ secrets.GITHUB_TOKEN }}
