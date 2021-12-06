@@ -23,7 +23,7 @@ jobs:
     needs: name
     steps:
       - name: print output
-        run: echo ${{ needs.name.outputs.firstword }} ${{ needs.name.outputs.secondword }}
+        run: echo ${{ needs.name.outputs.ORG_NAME }}
 
   # build:
   #   uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
