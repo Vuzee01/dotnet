@@ -16,7 +16,6 @@ jobs:
   build:
     uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
     with:
-      dotnet_version: "6.0.x"
       project_name: "Vuzee01_${{ github.event.repository.name }}"
       build_dir: "3/"
       org_name: "vuzimir"
