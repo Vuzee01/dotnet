@@ -25,12 +25,13 @@ jobs:
       - name: print output
         run: echo ${{ needs.name.outputs.ORG_NAME }}
 
-  # build:
-  #   uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
-  #   with:
-  #     project_name: "Vuzee01_${{ github.event.repository.name }}"
-  #     build_dir: "3/"
-  #     org_name: "${{ steps.get_org_name.outputs.ORG_NAME }}"
-  #   secrets:
-  #     sonar_token: ${{ secrets.SONAR_TOKEN }}
-  #     github_token: ${{ secrets.GITHUB_TOKEN }}
+  build:
+    uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
+    needs: name
+    with:
+      project_name: "Vuzee01_${{ github.event.repository.name }}"
+      #build_dir: "3/"
+      org_name: "${{ needs.name.outputs.ORG_NAME  }}"
+    secrets:
+      sonar_token: ${{ secrets.SONAR_TOKEN }}
+      github_token: ${{ secrets.GITHUB_TOKEN }}
