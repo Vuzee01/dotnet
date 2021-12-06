@@ -16,10 +16,8 @@ jobs:
 
   get_org_name:
     name: Get organization name 
+    uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
     steps:
-      - name: test
-        id: get_org_name
-        uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
       - name: print
         run: echo "${{ steps.get_org_name.outputs.ORG_NAME }}"
 
