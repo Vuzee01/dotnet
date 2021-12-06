@@ -18,6 +18,7 @@ jobs:
     with:
       dotnet_version: "6.0.x"
       project_name: "Vuzee01_${{ github.event.repository.name }}"
+      build_dir: "3/"
       org_name: "vuzimir"
     secrets:
       sonar_token: ${{ secrets.SONAR_TOKEN }}
