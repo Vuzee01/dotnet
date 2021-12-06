@@ -14,7 +14,7 @@ on:
 
 jobs:
 
-  get_org_name:
+  name:
     name: Get organization name 
     uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
 
@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: print output
         id: testt
-        run: echo "${{ needs.get_org_name.outputs.ORG_NAME }}"
+        run: echo "${{ needs.name.outputs.ORG_NAME }}"
 
   # build:
   #   uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
