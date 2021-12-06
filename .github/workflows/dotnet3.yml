@@ -13,12 +13,26 @@ on:
 
 
 jobs:
-  build:
-    uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
-    with:
-      project_name: "Vuzee01_${{ github.event.repository.name }}"
-      build_dir: "3/"
-      org_name: "vuzimir"
-    secrets:
-      sonar_token: ${{ secrets.SONAR_TOKEN }}
-      github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  get_org_name:
+    name: Get organization name 
+    uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
+
+
+  print_test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: print output
+        id: testt
+        run: echo "${{ steps.get_org_name.outputs.ORG_NAME }}"
+
+  # build:
+  #   uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
+  #   with:
+  #     project_name: "Vuzee01_${{ github.event.repository.name }}"
+  #     build_dir: "3/"
+  #     org_name: "${{ steps.get_org_name.outputs.ORG_NAME }}"
+  #   secrets:
+  #     sonar_token: ${{ secrets.SONAR_TOKEN }}
+  #     github_token: ${{ secrets.GITHUB_TOKEN }}
