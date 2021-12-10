@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: test-pr
-        uses: htec-infra/gha-utils/utils/comment-pr@improvement/fix-typos
+        uses: htec-infra/gha-utils/utils/comment-pr@improvement/expand-workflows
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
 
