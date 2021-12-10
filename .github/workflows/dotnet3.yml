@@ -6,8 +6,8 @@ on:
     paths:
       - "3/**"
   pull_request:
-    types: [closed]
-    branches: [ main ]
+    types: [ opened, synchronize, closed ]
+    branches: [ main, master ]
     paths:
       - "3/**"
 
@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: print output
         run: echo ${{ needs.name.outputs.ORG_NAME }}
+      - name: Comment PR
+        id: comment_pr
+        uses: htec-infra/gha-utils/utils/comment-pr@main
+        with:
+          token: "${{ GITHUB_TOKEN }}
 
   build:
     uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
