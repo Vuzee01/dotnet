@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: print output
         run: echo ${{ needs.name.outputs.ORG_NAME }}
+  test_comment:
+    steps:
       - name: Comment PR
         id: comment_pr
         uses: htec-infra/gha-utils/utils/comment-pr@main
