@@ -2,12 +2,12 @@ name: Dotnet3 Scan
 
 on:
   push:
-    branches: [ Vuzee01-patch-7 ]
+    branches: [ main ]
     paths:
       - "3/**"
   pull_request:
     types: [ opened, synchronize, closed ]
-    branches: [ Vuzee01-patch-7 ]
+    branches: [ main ]
     paths:
       - "3/**"
 
