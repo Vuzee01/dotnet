@@ -2,12 +2,12 @@ name: Dotnet3 Scan
 
 on:
   push:
-    branches: [ main ]
+    branches: [ Vuzee01-patch-7 ]
     paths:
       - "3/**"
   pull_request:
     types: [ opened, synchronize, closed ]
-    branches: [ main, master ]
+    branches: [ Vuzee01-patch-7 ]
     paths:
       - "3/**"
 
@@ -32,7 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: test-pr
-        uses: htec-infra/gha-utils/utils/comment-pr@improvement/expand-workflows
+        uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-
+      - id: test-pr2
+        uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+      - id: test-pr3
+        uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
