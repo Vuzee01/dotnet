@@ -7,7 +7,6 @@ on:
       - "3/**"
   pull_request:
     types: [ opened, synchronize, closed ]
-    branches: [ main, master ]
     paths:
       - "3/**"
 
