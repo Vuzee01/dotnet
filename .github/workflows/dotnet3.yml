@@ -24,6 +24,10 @@ jobs:
     steps:
       - name: print output
         run: echo ${{ needs.name.outputs.ORG_NAME }}
+      - id: test-pr
+        uses: htec-infra/gha-utils/utils/comment-pr@improvement/expand-workflows
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
   test_comment:
     runs-on: ubuntu-latest
     steps:
