@@ -34,6 +34,6 @@ jobs:
         run: |
            echo "Ide za tenant"
       - name: Env
-        if: ${{ env.APP_ENV }}
+        # if: ${{ env.APP_ENV }}
         run: |
            echo "Ide za env"
