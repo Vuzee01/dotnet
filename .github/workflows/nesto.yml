@@ -30,15 +30,20 @@ jobs:
         id: checksecrets
         run: |
           if [ "$inputs.tenant" == "" ]; then
-            echo ::set-output name=secretspresent::false
+            echo ::set-output name=tenant::false
           else
-            echo ::set-output name=secretspresent::true
+            echo ::set-output name=tenant::true
+          fi
+          if [ "$inputs.env" == "" ]; then
+            echo ::set-output name=env::false
+          else
+            echo ::set-output name=env::true
           fi
       - name: env
-        if: ${{ inputs.env }}
+        if: ${{ steps.checksecrets.outputs.env }}
         run: |
            echo "Ide za env"
       - name: tenant
-        if: ${{ steps.checksecrets.outputs.secretspresent }}
+        if: ${{ steps.checksecrets.outputs.tenant }}
         run: |
            echo "Ide za tenant"
