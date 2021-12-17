@@ -27,10 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: env
-        if: ${{ github.event.inputs.env }}
+        if: ${{ inputs.env }}
         run: |
            echo "Ide za env"
       - name: tenant
-        if: ${{ github.event.inputs.tenant }}
+        if: ${{ inputs.tenant }}
         run: |
            echo "Ide za tenant"
