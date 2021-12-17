@@ -24,7 +24,7 @@ jobs:
           token: ${{ secrets.CI_PAT }}
           event-type: app_deploy_v2
           repository: Vuzee01/dotnet
-          client-payload: '{"tenant": "neki_tenant_stas", "version": "1.2.3", "name": "mojservis"}'
+          client-payload: '{"tenant": "nesto", "version": "1.2.3", "name": "mojservis"}'
 
 
   # name:
