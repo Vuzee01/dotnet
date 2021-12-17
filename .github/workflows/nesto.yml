@@ -22,7 +22,7 @@ on:
 
 env:
   APP_ENV: ${{ inputs.env  }}
-  APP_TENANT: ${{ inputs.tenant }}
+  APP_TENANT: ${{ github.event.client_payload.tenant }}
 
 jobs:
   deploy:
