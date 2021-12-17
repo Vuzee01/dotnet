@@ -32,6 +32,8 @@ jobs:
       - name: check status
         id: checksecrets
         run: |
+          echo "${APP_TENANT}"
+          echo "${APP_ENV}"
           if [[ -z "${APP_TENANT}" ]]; then
             echo ::set-output name=tenant::false
           else
