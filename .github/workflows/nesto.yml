@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Tenant
-        if: ${{ env.APP_TENANT == "nesto" }}
+        if: ${{ env.APP_TENANT == 'nesto' }}
         run: |
            echo "Ide za tenant"
       - name: Env
