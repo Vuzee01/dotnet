@@ -14,33 +14,46 @@ on:
 
 jobs:
 
-  name:
-    uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
+  deploy:
+    name: Deploy App
+    runs-on: ubuntu:latest
+    steps:
+      - name: Run auto-deploy
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.CI_PAT }}
+          event-type: app_deploy_v2
+          repository: Vuzee01/dotnet
+          client-payload: '{"tenant": "neki_tenant_stas", "version": "1.2.3", "name": "mojservis"}'
 
-  print_test:
-    name: test
-    runs-on: ubuntu-latest
-    needs: name
-    steps:
-      - name: print output
-        run: echo ${{ needs.name.outputs.ORG_NAME }}
-      - id: test-pr
-        uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
-        with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-      - id: test-pr2
-        uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
-        with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-      - id: test-pr3
-        uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
-        with:
-          github_token: "${{ secrets.GITHUB_TOKEN }}"
-  test_comment:
-    runs-on: ubuntu-latest
-    steps:
-      - id: test-pr
-        uses: htec-infra/gha-utils/utils/comment-pr@improvement/expand-workflows
-        with:
-          token: "${{ secrets.GITHUB_TOKEN }}"
+
+  # name:
+  #   uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
+
+  # print_test:
+  #   name: test
+  #   runs-on: ubuntu-latest
+  #   needs: name
+  #   steps:
+  #     - name: print output
+  #       run: echo ${{ needs.name.outputs.ORG_NAME }}
+  #     - id: test-pr
+  #       uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
+  #       with:
+  #         github_token: "${{ secrets.GITHUB_TOKEN }}"
+  #     - id: test-pr2
+  #       uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
+  #       with:
+  #         github_token: "${{ secrets.GITHUB_TOKEN }}"
+  #     - id: test-pr3
+  #       uses: htec-infra/gha-utils/actions/comment-pr@v0.1.0
+  #       with:
+  #         github_token: "${{ secrets.GITHUB_TOKEN }}"
+  # test_comment:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - id: test-pr
+  #       uses: htec-infra/gha-utils/utils/comment-pr@improvement/expand-workflows
+  #       with:
+  #         token: "${{ secrets.GITHUB_TOKEN }}"
 
