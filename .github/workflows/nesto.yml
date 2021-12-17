@@ -32,13 +32,13 @@ jobs:
       - name: check status
         id: checksecrets
         run: |
-          if [ "$tenant" == "" ]; then
+          if [ "$APP_TENANT" == "" ]; then
             echo ::set-output name=tenant::false
           else
             echo ::set-output name=tenant::true
           fi
           
-          if [ "$env" == "" ]; then
+          if [ "$APP_ENV" == "" ]; then
             echo ::set-output name=env::false
           else
             echo ::set-output name=env::true
