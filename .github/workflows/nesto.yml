@@ -24,7 +24,7 @@ on:
 jobs:
   deploy:
     name: Deploy ECS Service
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: env
         if: ${{ github.event.inputs.env }}
