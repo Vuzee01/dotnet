@@ -26,11 +26,19 @@ jobs:
     name: Deploy ECS Service
     runs-on: ubuntu-latest
     steps:
+      - name: check status
+        id: checksecrets
+        run: |
+          if [ "$inputs.tenant" == "" ]; then
+            echo ::set-output name=secretspresent::false
+          else
+            echo ::set-output name=secretspresent::true
+          fi
       - name: env
         if: ${{ inputs.env }}
         run: |
            echo "Ide za env"
       - name: tenant
-        if: ${{ inputs.tenant }}
+        if: ${{ steps.checksecrets.outputs.secretspresent }}
         run: |
            echo "Ide za tenant"
