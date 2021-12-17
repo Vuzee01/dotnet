@@ -21,8 +21,8 @@ on:
     types: [ app_deploy_v2 ]
 
 env:
-  APP_ENV: ${{ inputs.env  }}
-  APP_TENANT: ${{ inputs.tenant }}
+  APP_ENV: ${{ github.event.inputs.env  }}
+  APP_TENANT: ${{ github.event.inputs.tenant }}
 
 jobs:
   deploy:
@@ -44,10 +44,10 @@ jobs:
             echo ::set-output name=env::true
           fi
       - name: Tenant
-        if: ${{ steps.checksecrets.outputs.tenant }}
+        if: ${{ env.APP_TENANT }}
         run: |
            echo "Ide za tenant"
       - name: Env
-        if: ${{ steps.checksecrets.outputs.env }}
+        if: ${{ env.APP_ENV }}
         run: |
            echo "Ide za env"
