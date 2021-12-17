@@ -21,8 +21,8 @@ on:
     types: [ app_deploy_v2 ]
 
 env:
-  APP_ENV: ${{ github.event.inputs.env  }}
-  APP_TENANT: ${{ github.event.inputs.tenant }}
+  APP_ENV: ${{ inputs.env  }}
+  APP_TENANT: ${{ inputs.tenant }}
 
 jobs:
   deploy:
