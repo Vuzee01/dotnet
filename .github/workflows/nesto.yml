@@ -1,0 +1,36 @@
+name: Deploy App on ECS (v2)
+
+on:
+  # manual trigger
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Application Name'
+        required: true
+      env:
+        description: 'Environment'
+        required: false
+      version:
+        description: 'Version (docker tag)'
+        required: true
+      tenant:
+        description: 'Tenant'
+        required: false
+  
+  repository_dispatch:
+    types: [ app_deploy_v2 ]
+
+
+jobs:
+  deploy:
+    name: Deploy ECS Service
+    runs-on: ubuntu:latest
+    steps:
+      - name: env
+        if: ${{ github.event.inputs.env }}
+        run: |
+           echo "Ide za env"
+      - name: tenant
+        if: ${{ github.event.inputs.tenant }}
+        run: |
+           echo "Ide za tenant"
