@@ -22,7 +22,7 @@ on:
 
 env:
   APP_ENV: ${{ github.event.client_payload.env || github.event.inputs.env  }}
-  APP_TENANT: ${{ github.event.client_payload.version || github.event.inputs.tenant }}
+  APP_TENANT: ${{ github.event.client_payload.tenant || github.event.inputs.tenant }}
 
 jobs:
   deploy:
@@ -32,22 +32,22 @@ jobs:
       - name: check status
         id: checksecrets
         run: |
-          if [ "$APP_TENANT" == "" ]; then
+          if [[ -z "${APP_TENANT}" ]]; then
             echo ::set-output name=tenant::false
           else
             echo ::set-output name=tenant::true
           fi
           
-          if [ "$APP_ENV" == "" ]; then
+          if [[ -z "${APP_ENV}" ]]; then
             echo ::set-output name=env::false
           else
             echo ::set-output name=env::true
           fi
-      - name: env
-        if: ${{ steps.checksecrets.outputs.env }}
-        run: |
-           echo "Ide za env"
-      - name: tenant
+      - name: Tenant
         if: ${{ steps.checksecrets.outputs.tenant }}
         run: |
            echo "Ide za tenant"
+      - name: Env
+        if: ${{ steps.checksecrets.outputs.env }}
+        run: |
+           echo "Ide za env"
