@@ -16,7 +16,7 @@ jobs:
 
   deploy:
     name: Deploy App
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Run auto-deploy
         uses: peter-evans/repository-dispatch@v1
