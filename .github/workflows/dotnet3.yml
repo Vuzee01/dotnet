@@ -18,13 +18,21 @@ jobs:
     name: Deploy App
     runs-on: ubuntu-latest
     steps:
-      - name: Run auto-deploy
-        uses: peter-evans/repository-dispatch@v1
+      - name: Get env data
+        id: env_data
+        uses: Vuzee01/workflow/resolver@main
         with:
-          token: ${{ secrets.CI_PAT }}
-          event-type: app_deploy_v2
-          repository: Vuzee01/dotnet
-          client-payload: '{"tenant": "nesto", "version": "1.2.3", "name": "mojservis"}'
+          app_env: "dev"
+          app_name: "service2"
+          docker_repo_host: "eu.gcr.io/random/host"
+      - name: print env
+        run: |
+          echo service_name ${{ steps.env_data.outputs.service_name }}
+          echo cluser name ${{ steps.env_data.outputs.cluster }}
+          echo WFS ${{ steps.env_data.outputs.wait_for_service }}
+          echo repo ${{ steps.env_data.outputs.repo }}
+          echo acc id ${{ steps.env_data.outputs.aws_acc_id }}
+          echo taskdef loc ${{ steps.env_data.outputs.taskdef }}
 
 
   # name:
