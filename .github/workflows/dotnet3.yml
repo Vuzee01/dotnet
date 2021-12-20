@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get env data
-        id: env_data
+        id: env_data1
         uses: Vuzee01/workflow/resolver@main
         with:
           app_env: "dev"
@@ -27,12 +27,12 @@ jobs:
           docker_repo_host: "eu.gcr.io/random/host"
       - name: print env
         run: |
-          echo service_name ${{ steps.env_data.outputs.service_name }}
-          echo cluser name ${{ steps.env_data.outputs.cluster }}
-          echo WFS ${{ steps.env_data.outputs.wait_for_service }}
-          echo repo ${{ steps.env_data.outputs.repo }}
-          echo acc id ${{ steps.env_data.outputs.aws_acc_id }}
-          echo taskdef loc ${{ steps.env_data.outputs.taskdef }}
+          echo service_name ${{ steps.env_data1.outputs.service_name }}
+          echo cluser name ${{ steps.env_data1.outputs.cluster }}
+          echo WFS ${{ steps.env_data1.outputs.wait_for_service }}
+          echo repo ${{ steps.env_data1.outputs.repo }}
+          echo acc id ${{ steps.env_data1.outputs.aws_acc_id }}
+          echo taskdef loc ${{ steps.env_data1.outputs.taskdef }}
 
 
   # name:
