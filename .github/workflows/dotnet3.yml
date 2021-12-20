@@ -27,7 +27,7 @@ jobs:
           docker_repo_host: "eu.gcr.io/random1/host"
       - name: print env
         run: |
-          echo service_name ${{ steps.env_data1.outputs.service_name }}
+          echo service_name ${{ steps.env_data1.outputs.app_service }}
           echo cluser name ${{ steps.env_data1.outputs.cluster }}
           echo WFS ${{ steps.env_data1.outputs.wait_for_service }}
           echo repo ${{ steps.env_data1.outputs.repo }}
