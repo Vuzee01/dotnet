@@ -22,9 +22,9 @@ jobs:
         id: env_data1
         uses: Vuzee01/workflow/resolver@main
         with:
-          app_env: "dev"
-          app_name: "service2"
-          docker_repo_host: "eu.gcr.io/random/host"
+          app_env: "prod"
+          app_name: "service1"
+          docker_repo_host: "eu.gcr.io/random1/host"
       - name: print env
         run: |
           echo service_name ${{ steps.env_data1.outputs.service_name }}
