@@ -44,4 +44,6 @@ runs:
         APP_NAME: ${{ inputs.app_name  }}
         APP_ENV: ${{ inputs.app_env  }}
         DOCKER_REPO_HOST: ${{ inputs.docker_repo_host }}    
-      run: ../../scripts/resolve-env.sh
+      run: |
+        echo $PWD
+        ls -lah
