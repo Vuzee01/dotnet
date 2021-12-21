@@ -1,15 +1,6 @@
 name: Dotnet3 Scan
 
-on:
-  push:
-    branches: [ main ]
-    paths:
-      - "3/**"
-  pull_request:
-    types: [ opened, synchronize, closed ]
-    branches: [ main, master ]
-    paths:
-      - "3/**"
+on: push
 
 
 jobs:
