@@ -41,7 +41,7 @@ jobs:
 
   sonar:
     name: sonar
-    uses: htec-infra/gha-tbd/fix/resuable-workflow/.github/workflows/soncarscan-dotnet.yml@fix/resuable-workflow
+    uses: htec-infra/gha-tbd/fix/resuable-workflow/.github/workflows/soncarscan-dotnet.yml@main
     with:
       build_dir: "src/"
     secrets:
