@@ -7,7 +7,7 @@ jobs:
 
   sonarcloud:
     name: Code Quality check
-    uses: htec-infra/gha-tbd/.github/workflows/sonarscan-dotnet.yml@fix/resuable-workflow
+    uses: htec-infra/gha-tbd/.github/workflows/soncarscan-dotnet.yml@fix/resuable-workflow
     with:
       build_dir: "src/"
     secrets:
