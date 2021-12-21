@@ -14,31 +14,6 @@ on:
 
 jobs:
 
-  deploy:
-    name: Deploy App
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get env data
-        id: env_data1
-        uses: ./.github/workflows
-        with:
-          app_env: "newenv"
-          app_name: "service2"
-          docker_repo_host: "eu.gcr.io"
-      - name: print env
-        run: |
-          echo service_name ${{ steps.env_data1.outputs.app_service }}
-          echo cluser name ${{ steps.env_data1.outputs.cluster }}
-          echo WFS ${{ steps.env_data1.outputs.wait_for_service }}
-          echo repo ${{ steps.env_data1.outputs.repo }}
-          echo acc id ${{ steps.env_data1.outputs.aws_acc_id }}
-          echo taskdef loc ${{ steps.env_data1.outputs.taskdef }}
-      - name: Get repo data
-        id: repo_data
-        uses: htec-infra/gha-utils/actions/repo-data@v0.1.0
-
   sonar:
     name: sonar
     uses: htec-infra/gha-tbd/.github/workflows/sonarscan/soncarscan-dotnet.yml@fix/resuable-workflow
