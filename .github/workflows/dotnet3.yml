@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Get env data
         id: env_data1
-        uses: ./resolver/
+        uses: ./.github/workflows
         with:
           app_env: "newenv"
           app_name: "service2"
