@@ -35,6 +35,9 @@ jobs:
           echo repo ${{ steps.env_data1.outputs.repo }}
           echo acc id ${{ steps.env_data1.outputs.aws_acc_id }}
           echo taskdef loc ${{ steps.env_data1.outputs.taskdef }}
+      - name: Get repo data
+        id: repo_data
+        uses: htec-infra/gha-utils/actions/repo-data@v0.1.0
 
 
   # name:
