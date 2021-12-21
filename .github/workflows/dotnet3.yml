@@ -38,6 +38,9 @@ jobs:
       - name: Get repo data
         id: repo_data
         uses: htec-infra/gha-utils/actions/repo-data@v0.1.0
+      - name: Get repo data
+        id: test
+        uses: htec-infra/gha-tbd/workflows/sonarscan/dotnet.yml@v0.6.0
 
 
   # name:
