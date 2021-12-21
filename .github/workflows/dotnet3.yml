@@ -22,7 +22,7 @@ jobs:
         id: env_data1
         uses: Vuzee01/workflow/resolver@main
         with:
-          app_env: "prod"
+          app_env: "newenv"
           app_name: "service2"
           docker_repo_host: "eu.gcr.io"
       - name: print env
