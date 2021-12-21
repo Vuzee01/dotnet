@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Get env data
         id: env_data1
-        uses: Vuzee01/workflow/resolver@main
+        uses: ${{github.action_path}}../../resolver/
         with:
           app_env: "newenv"
           app_name: "service2"

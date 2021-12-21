@@ -1,0 +1,47 @@
+name: 'Environment data'
+description: 'Fetch environment data'
+
+inputs:
+  app_env:
+    description: "1"
+    required: true
+  app_name:
+    description: "1"
+    required: true
+  docker_repo_host:
+    description: "1"
+    required: true
+
+
+outputs:
+  app_service:
+    description: "Service name"
+    value: ${{ steps.env_data.outputs.APP_SERVICE }}
+  cluster:
+    description: "Cluster name"
+    value: ${{ steps.env_data.outputs.APP_CLUSTER }}
+  wait_for_service:
+    description: "Flag for ECS to wait for stability"
+    value: ${{ steps.env_data.outputs.WAIT_FOR_SERVICE }}
+  repo:
+    description: "Container repository URL"
+    value: ${{ steps.env_data.outputs.DOCKER_IMG_REPO }}
+  aws_acc_id:
+    description: "Location for task definsion file"
+    value: ${{ steps.env_data.outputs.AWS_ACC_ID }}
+  taskdef:
+    description: "Location for task definsion file"
+    value: ${{ steps.env_data.outputs.TASKDEF_JSON }}
+
+
+
+runs:
+  using: "composite"
+  steps:
+    - id: env_data
+      shell: bash
+      env:
+        APP_NAME: ${{ inputs.app_name  }}
+        APP_ENV: ${{ inputs.app_env  }}
+        DOCKER_REPO_HOST: ${{ inputs.docker_repo_host }}    
+      run: ${{ github.action_path }}/../scripts/resolve-env.sh
