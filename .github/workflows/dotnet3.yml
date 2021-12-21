@@ -41,7 +41,7 @@ jobs:
 
   sonar:
     name: sonar
-    uses: Vuzee01/workflow/.github/workflows/dotnet/SonarQubeDotnet.yml@main
+    uses: Vuzee01/workflow/.github/workflows/SonarQubeDotnet.yml@main
     with:
       build_dir: "src/"
     secrets:
