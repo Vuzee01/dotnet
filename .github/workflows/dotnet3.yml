@@ -9,7 +9,7 @@ jobs:
     name: Code Quality check
     uses: htec-infra/gha-tbd/.github/workflows/sonarscan-dotnet.yml@main
     with:
-      build_dir: "src/"
+      build_dir: "3/"
     secrets:
       sonar_token: ${{ secrets.SONAR_TOKEN }}
       gh_token: ${{ secrets.GITHUB_TOKEN }}
