@@ -2,17 +2,30 @@ name: Dotnet3 Scan
 
 on: push
 
+env:
+  TEST: 'test'
+  TEST2: 'test2'
+
 
 jobs:
 
-  sonarcloud:
-    name: Code Quality check
-    uses: htec-infra/gha-tbd/.github/workflows/sonarscan-dotnet.yml@main
-    with:
-      build_dir: "3/"
-    secrets:
-      sonar_token: ${{ secrets.SONAR_TOKEN }}
-      gh_token: ${{ secrets.GITHUB_TOKEN }}
+  print_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: |
+          echo $TEST
+
+  # sonarcloud:
+  #   name: Code Quality check
+  #   uses: htec-infra/gha-tbd/.github/workflows/sonarscan-dotnet.yml@main
+  #   with:
+  #     build_dir: "3/"
+  #     org_name: "Vuzee01"
+  #     repo_name: "dotnet"
+  #   secrets:
+  #     sonar_token: ${{ secrets.SONAR_TOKEN }}
+  #     gh_token: ${{ secrets.GITHUB_TOKEN }}
   # name:
   #   uses: Vuzee01/workflow/.github/workflows/GetOrgName.yml@main
 
